@@ -1,0 +1,14 @@
+provider "aws" {
+}
+
+locals {
+Name = "swiggy"
+}
+
+resource "aws_instance" "one" {
+ami = "give ami id"
+instance_type = "t2.micro"
+tags = {
+Name = "${local_Name}"
+}
+}
