@@ -1,9 +1,9 @@
-# terraform
+# Terraform
 we use terraform to build a infrastructure in aws/azure/gcp. 
 It is IaC (Infrastructure as code) tool.  
 we use Harshicorp configuration language to write it.  
 
-# cloud alternatives for terraform
+# Cloud alternatives for terraform
 AWS- Cloud formation template (JSON/YAML)
 
 AZURE- ARM Templates
@@ -31,7 +31,7 @@ secret key
 Region        
 Format
 
-# defining variable block
+# Defining variable block
 
 1) Instance               
   variable - "instance_type"                  
@@ -60,7 +60,7 @@ Tf var files :- When we want use same main.tf with different variables. For exam
 - so for this we have to use workspaces.                 
 create different workspaces for each infrastructure and then try terraform apply. now no overriding take place.         
 
-# commands used
+# Commands used
 
 terraform init -  To initialize ang install all plugins.          
 terraform validate - will chesk the configuration.              
@@ -76,7 +76,7 @@ terraform workspace list - will show the list of workspace.
 terraform workspace select swiggy - to go into that particular workspace.           
 terraform apply --var-file="swiggy.tfvars" --auto-approve - to create swiggy.tfvars                    
 
-# to delete workspaces
+# To delete workspaces
 
 * To delete swiggy workspace, first go into the         
 -terraform workspace select swiggy           
@@ -85,3 +85,18 @@ terraform apply --var-file="swiggy.tfvars" --auto-approve - to create swiggy.tfv
 -terraform workspace select default
 terraform workspace delete swiggy
  In this way we have to delete all the workspaces we created.      
+
+# Locals
+we can define locals once and can be changed multiple times.         
+differnce between locals and variables.
+Locals-         
+Should always be mentioned only in main.tf files         
+can"t be changed once defined.       
+can be used multiple times.           
+values which are static should be kept here.           
+
+variables-      
+can be written separately also.         
+will change time to time.                    
+vaues which are dynamis should kept here.                   
+
