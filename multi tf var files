@@ -1,0 +1,28 @@
+vim main.tf
+provider "aws" {
+region = "ap-south-1"
+}
+
+resource "aws_instance" "one" {
+ami = (give the ami from catalog from the ap-south-1)
+instance_type = "t2.micro"
+tags = {
+Name = "webserver"
+}
+}
+vim variable.tf
+variable "ami_id" {
+}
+variable "instance_type" {
+}
+variable "instance_name" {
+}
+create different workspaces for different env
+vim swiggytest.tfvars
+ami_id = "ami-08f78cb3cc8a4578e"
+instance_type = "tr.micro"
+instance_name = "swiggy-test"
+vim swiggyprod.tfvars
+ami_id = "ami-08f78cb3cc8a4578e"
+instance_type = "t2.medium"
+instance_name = "swiggy-prod"
