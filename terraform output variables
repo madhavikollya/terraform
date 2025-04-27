@@ -1,0 +1,15 @@
+provider "aws" {
+region = "ap-south-1"
+}
+
+resource "aws_instance" "one" {
+ami = "ami-0f1dcc636b69a6438"
+instance_type = "t2.micro"
+tags = {
+Name = "webserver"
+}
+}
+
+output "abc" {
+value = [aws_instance.one.public_ip , aws_instance.one.public_dns , aws_instance.one.private_ip]
+}
