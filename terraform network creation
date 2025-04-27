@@ -1,0 +1,30 @@
+provider "aws" {
+}
+
+locals {
+Name = "swiggy"
+}
+
+resource "aws_vpc" "one" {
+cidr_block = "10.5.0.0/16"
+tags = {
+Name = "${local.Name}-vpc"
+}
+}
+
+resource "aws_subnet" "two" {
+cidr_block = "10.5.0.0/16"
+vpc_id = aws_vpc.one.id
+tags = {
+Name = "${local.Name}-subnet"
+}
+}
+
+resource "aws_instance" "three" {
+subnet_id = aws_subnet.two.id
+ami = "ami-0f1dcc636b69a6438"
+instance_type = "t2.micro"
+tags = {
+Name = "${local.Name}-server"
+}
+}
