@@ -1,0 +1,12 @@
+provider "aws" {
+region = "ap-south-1"
+}
+
+resource "aws_instance" "one" {
+count = 3
+ami = (give the ami from catalog from the ap-south-1)
+instance_type = "t2.micro"
+tags = {
+Name = "webserver"
+}
+}
