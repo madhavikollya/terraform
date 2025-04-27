@@ -33,12 +33,16 @@ Format
 
 # defining variable block
 
-1) Instance       
+1) Instance               
+  variable - "instance_type"                  
 
-2)Count - to create number of instances        
+2) Count - to create number of instances             
+   variable - "count_servers"                     
 
-3)Map/Set - to provide tags to instance created                   
+3) Map/Set - to provide tags to instance created                   
+ variable - "instance_tags"            
  use type = map{string}
 
-4)List - to create IAM users            
-type = list{string}
+4) List - to create IAM users            
+  variable - "iam_users"             
+  type = list{string}
