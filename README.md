@@ -9,3 +9,11 @@ AWS- Cloud formation template (JSON/YAML)
 AZURE- ARM Templates
 
 GCP- GDE
+
+# 3 important compartments
+Provider , region info
+
+Resource confiruration
+
+Variable declaration
+
