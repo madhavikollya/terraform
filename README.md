@@ -101,3 +101,8 @@ differnce between locals and variables.
 -will change time to time.                    
 -vaues which are dynamis should kept here.                   
 
+# Terraform CLI
+
+we use it to pass values from commandline during the runtime. Bymistake if we provide wrong information, it compares with statefile and replace with right one. For example if you give instance type as t2.medium instead of t2.micro, terraform will first refresh, then compares with statefile and the deletes.                  
+terraform apply --auto-approve -var="instance_type=t2.micro" - will create instance             
+
