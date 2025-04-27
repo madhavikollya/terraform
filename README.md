@@ -104,5 +104,9 @@ differnce between locals and variables.
 # Terraform CLI
 
 we use it to pass values from commandline during the runtime. Bymistake if we provide wrong information, it compares with statefile and replace with right one. For example if you give instance type as t2.medium instead of t2.micro, terraform will first refresh, then compares with statefile and the deletes.                  
-terraform apply --auto-approve -var="instance_type=t2.micro" - will create instance             
+terraform apply --auto-approve -var="instance_type=t2.micro" - will create instance                
+
+# Terraform outputs variables
+
+Used to show metadata of resources. While creating resources if you want to print the metadata belonged to it the we can use output.
 
