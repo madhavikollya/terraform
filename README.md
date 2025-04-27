@@ -88,15 +88,16 @@ terraform workspace delete swiggy
 
 # Locals
 we can define locals once and can be changed multiple times.         
-differnce between locals and variables.
-Locals-         
-Should always be mentioned only in main.tf files         
-can"t be changed once defined.       
-can be used multiple times.           
-values which are static should be kept here.           
+differnce between locals and variables.                  
 
-variables-      
-can be written separately also.         
-will change time to time.                    
-vaues which are dynamis should kept here.                   
+*Locals-         
+-Should always be mentioned only in main.tf files         
+-can"t be changed once defined.       
+-can be used multiple times.           
+-values which are static should be kept here.           
+
+*variables-      
+-can be written separately also.         
+-will change time to time.                    
+-vaues which are dynamis should kept here.                   
 
