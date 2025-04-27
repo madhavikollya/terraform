@@ -1,0 +1,14 @@
+provider "aws" {
+region = "ap-south-1"
+}
+
+resource "aws_iam_user" "one" {
+count = length(var.iam_users)
+name = var.iam_users[count_index]
+}
+
+variable "iam_users" {
+description = "*"
+type = list{string}
+default = ["user1" , "user2"]
+}
