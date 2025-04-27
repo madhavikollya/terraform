@@ -47,16 +47,41 @@ Format
   variable - "iam_users"             
   type = list{string}
 
-we can create variables separately as variable.tf files also
+we can create variables separately as variable.tf files also.        
+If we want to change the infrastructure we can do it in variable.tf           
 
 # Multi tf var files
 
-Tf var files : When we want use same main.tf with different variables. we create                        
-vim main.tf                
-vim variable.tf            
-vim swiggy.tfvars , vim zomato.tfvars - here we define all the values required for creating infrastructure.              
-when we give terraform apply by changing the file names overridding may occur.           
-so for this we have to use workspaces.                 
+Tf var files :- When we want use same main.tf with different variables. For example lets create                        
+- vim main.tf                
+- vim variable.tf                     
+- vim swiggy.tfvars , vim zomato.tfvars - here we define all the values required for creating infrastructure.              
+- when we give terraform apply by changing the file names overridding may occur.           
+- so for this we have to use workspaces.                 
 create different workspaces for each infrastructure and then try terraform apply. now no overriding take place.         
 
+# commands used
 
+terraform init -  To initialize ang install all plugins.          
+terraform validate - will chesk the configuration.              
+terraform plan - will execute and also check the code errors.             
+terraform apply - will check values and show errors during runtime.            
+terraform destroy - to destroy the infrastructure.          
+terraform apply --auto-approve - permission given prior to directly create infrastructure.           
+terraform state list - will show the list                        
+terraform destroy --auto-approve -target="aws_instance.one[0]" - to destroy particular instance. to destroy 2 instances 2 times target, instance name should be given.                  
+terraform workspace show - to see current workspace and take you into it directly.           
+terraform workspace new swiggy - to create new workspace.            
+terraform workspace list - will show the list of workspace.           
+terraform workspace select swiggy - to go into that particular workspace.           
+terraform apply --var-file="swiggy.tfvars" --auto-approve - to create swiggy.tfvars                    
+
+# to delete workspaces
+
+* To delete swiggy workspace, first go into the         
+-terraform workspace select swiggy           
+-terraform destroy --var-file="swiggy.tfvars" --auto-approve         
+-now we can't direct delete swiggy workspace by staying inside it. so come out of it.
+-terraform workspace select default
+terraform workspace delete swiggy
+ In this way we have to delete all the workspaces we created.      
