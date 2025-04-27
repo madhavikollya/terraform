@@ -46,3 +46,17 @@ Format
 4) List - to create IAM users            
   variable - "iam_users"             
   type = list{string}
+
+we can create variables separately as variable.tf files also
+
+# Multi tf var files
+
+Tf var files : When we want use same main.tf with different variables. we create                        
+vim main.tf                
+vim variable.tf            
+vim swiggy.tfvars , vim zomato.tfvars - here we define all the values required for creating infrastructure.              
+when we give terraform apply by changing the file names overridding may occur.           
+so for this we have to use workspaces.                 
+create different workspaces for each infrastructure and then try terraform apply. now no overriding take place.         
+
+
