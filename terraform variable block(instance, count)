@@ -1,0 +1,24 @@
+provider "aws" {
+region = "ap-south-1"
+}
+
+resource "aws_instance" "one" {
+count = var.count_servers
+ami = (give the ami from catalog from the ap-south-1)
+instance_type = var.instance_type
+tags = {
+Name = "webserver"
+}
+}
+
+variable "instance_type" {
+description = "*"
+type = string
+default = "t2.micro"
+}
+
+variable "count_servers" {
+description = "*"
+type = number
+default = 3
+}
