@@ -25,19 +25,15 @@ sudo apt update && sudo apt install terraform
 
 Go to terraform install on google and select which ever machine u want to!
 
-aws configure
-
-access key
-
-secret key
-
-Region
-
+aws configure            
+access key         
+secret key       
+Region        
 Format
 
 # defining variable block
 
-1) Instance
+1) Instance       
 
 2)Count - to create number of instances        
 
