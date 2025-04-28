@@ -119,6 +119,8 @@ type = list(string)
 # Foreach loop
 
 It will eliminate the duplicate value.             
-but here its not like loop. It doesn't even accept same iam user twice, it rejects and will not show error because it will not take the input at all.  
+but here its not like loop. It doesn't even accept same iam user twice, it rejects and will not show error because it will not take the input.        
  type =set(string)   or   type = map(string)            
+
+# Alias & Providers
 
