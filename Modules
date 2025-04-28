@@ -1,0 +1,47 @@
+vim provider.tf
+provider "aws" {
+region = "ap-south-1"
+}
+
+vim main.tf
+module "my instance module" {
+    source = "./module/instances"
+    ami = "ami00000000"
+    instance_type = "t2.micro"
+    instance_name = "maaddhu"
+}
+module "s3_module" {
+   source = "./module/buckets"
+   bucket_name = "maaddhu"
+}
+
+vim modules/instances/main.tf
+resource "aws_instance" "one" {
+ami = " "
+instance_type = var.instance_type
+tags = {
+Name = instance_name
+}
+}
+
+vim modules/instances/variable.tf
+variable "ami" {
+type = string
+}
+variable "instance_type" {
+type = string 
+}
+variable "instance_name"
+type = string"
+}
+
+
+vim modules/buckets/main.tf
+resource "aws_s3bucket" "two" {
+ami = var.bucket_name
+}
+
+vim modules/buckets/variable.tf
+variable "bucket_name" {
+type = string
+}
