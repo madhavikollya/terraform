@@ -115,7 +115,7 @@ It will take duplicate values and will show error.
 Here if we try to create same iam user twice the terraform will first accept it and later rejects it and will show it as a error.             
 type = list(string)
 
-# Foreach loop
+# For_each loop
 
 - It will eliminate the duplicate value.             
 - It is not like loop. It doesn't even accept same iam user twice, it rejects and will not show error because it will not take the input.        
@@ -158,7 +158,7 @@ Mandatory commands:-
   automatically replicate in other server also.                
 - Browse terraform efs code -> c&p -> EFS created                
 - Goto EFS in AWS -> attach -> mount via DNS -> copy the command -> paste it on terminal                    
-  * Enable EFS for the content to get copied.
+  * Enable EFS on AWS for the content to get copied.
 
 
 # Modules     
