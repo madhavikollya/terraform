@@ -4,16 +4,14 @@ It is IaC (Infrastructure as code) tool.
 we use Harshicorp configuration language to write it.  
 
 # Cloud alternatives for terraform
-AWS- Cloud formation template (JSON/YAML)
-
-AZURE- ARM Templates
-
-GCP- GDE
+AWS- Cloud formation template (JSON/YAML)                     
+AZURE- ARM Templates                    
+GCP- GDE               
 
 # 3 important compartments
 Provider , region info
 
-Resource confiruration
+Resource configuration
 
 Variable declaration
 
@@ -23,8 +21,8 @@ wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sh
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 
-Go to terraform install on google and select which ever machine u want to!
-
+- Go to terraform install on google and select which ever machine u want to!
+- After installing terraform on amazon linux             
 aws configure            
 access key         
 secret key       
@@ -62,19 +60,20 @@ create different workspaces for each infrastructure and then try terraform apply
 
 # Commands used
 
-terraform init -  To initialize ang install all plugins.          
-terraform validate - will chesk the configuration.              
-terraform plan - will execute and also check the code errors.             
-terraform apply - will check values and show errors during runtime.            
-terraform destroy - to destroy the infrastructure.          
-terraform apply --auto-approve - permission given prior to directly create infrastructure.           
-terraform state list - will show the list                        
-terraform destroy --auto-approve -target="aws_instance.one[0]" - to destroy particular instance. to destroy 2 instances 2 times target, instance name should be given.                  
-terraform workspace show - to see current workspace and take you into it directly.           
-terraform workspace new swiggy - to create new workspace.            
-terraform workspace list - will show the list of workspace.           
-terraform workspace select swiggy - to go into that particular workspace.           
-terraform apply --var-file="swiggy.tfvars" --auto-approve - to create swiggy.tfvars                    
+- terraform init -  To initialize ang install all plugins.          
+- terraform validate - will chesk the configuration.              
+- terraform plan - will execute and also check the code errors.             
+- terraform apply - will check values and show errors during runtime.            
+- terraform destroy - to destroy the infrastructure.          
+- terraform apply --auto-approve - permission given prior to directly create infrastructure.           
+- terraform state list - will show the  running resources list                        
+- terraform destroy --auto-approve -target="aws_instance.one[0]" - to destroy particular instance. to destroy 2 instances 2 times target, instance 
+   name should be given.                  
+- terraform workspace show - to see current workspace and take you into it directly.           
+- terraform workspace new swiggy - to create new workspace.            
+- terraform workspace list - will show the list of workspace.           
+- terraform workspace select swiggy - to go into that particular workspace.           
+- terraform apply --var-file="swiggy.tfvars" --auto-approve - to create swiggy.tfvars                    
 
 # To delete workspaces
 
@@ -90,13 +89,13 @@ terraform workspace delete swiggy
 we can define locals once and can be changed multiple times.         
 differnce between locals and variables.                  
 
-*Locals-         
+* Locals-         
 -Should always be mentioned only in main.tf files         
 -can"t be changed once defined.       
 -can be used multiple times.           
 -values which are static should be kept here.           
 
-*variables-      
+* Variables-      
 -can be written separately also.         
 -will change time to time.                    
 -vaues which are dynamis should kept here.                   
@@ -118,8 +117,8 @@ type = list(string)
 
 # Foreach loop
 
-It will eliminate the duplicate value.             
-but here its not like loop. It doesn't even accept same iam user twice, it rejects and will not show error because it will not take the input.        
+- It will eliminate the duplicate value.             
+- It is not like loop. It doesn't even accept same iam user twice, it rejects and will not show error because it will not take the input.        
  type =set(string)   or   type = map(string)            
 
 # Alias & Providers
@@ -129,14 +128,22 @@ but here its not like loop. It doesn't even accept same iam user twice, it rejec
 
 # RBAC (Role Based Access Control)
 
-provideing permissions to IAM users to create or delete s3 bucket, EC2, etc.                    
+providing permissions to IAM users to create or delete s3 bucket, EC2, etc.                    
 
 # S3 Backend setup and statefile
 
 - In terraform We need to store the statefile because all the information  we peovide in code is stored/present in it only.             
 - we can store statefile in s3 bucket, Dynamo db, Vault etc. so that nobody can access it.             
 - If we want to update the tffile by adding some tags & give terraform apply, it will go to statefile & check the infrastructure that is already created. If we didn't store the statefile it will create a new infrastructure. (If there is no statefile terraform will never know that it has to update infra, rather it creates a new one).           
-- devops eng. -> will modify the code ->  terraform init -> terraform apply -> automatically the statefile is also updated in s3bucket             
+- devops eng. -> will modify the code ->  terraform init -> terraform apply -> automatically the statefile is also updated in s3bucket
+
+
+# Dynamic Block        
+
+Its purpose is reusablity of code.              
+If we write a code, want to use it again and again.                 
+For example, this might be most useful for creating security groups.          
+
 
 
 
