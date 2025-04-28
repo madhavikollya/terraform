@@ -1,0 +1,31 @@
+provider "aws" {
+region = "ap-south-1"
+}
+
+resource "aws_instance" "one" {
+ami = "ami-0f1dcc636b69a6438"
+instance_type = "t2.micro"
+tags = {
+Name = "web"
+}
+lifecycle {
+  prevent_destroy = true
+}
+}
+
+resource "aws_s3_bucket" "b" {
+  bucket = "ma"
+}
+
+resource "aws_instance" "one" {
+ami = "ami-0f1dcc636b69a6438"
+instance_type = "t2.micro"
+tags = {
+Name = "appserver"
+}
+lifecycle {
+  ignore_changes = [
+  tags ["Name"]
+  ]
+}
+}
