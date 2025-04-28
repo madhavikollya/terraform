@@ -15,7 +15,7 @@ decription = "Ingress rules for port 80"
 
 resource "aws_instance" "ec2_example" {
   ami = "ami-0f1dcc636b69a6438"
-  instance-type = "t2.micro"
+  instance_type = "t2.micro"
   vpc_security_group_ids = [ aws_security_group.main.id ]
   tags = {
     Name = "terraform EC2"
