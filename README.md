@@ -162,10 +162,26 @@ Mandatory commands:-
 
 
 # Modules     
+
 - Similar to ansible roles.                       
 - Here main.tf file is divided into multiple subfiles using module.                    
 - In module we can create multiple resources.              
 - It is not a best practise                 
-  
+- create --
+ * vim provider.tf                  
+ * vim main.tf
+ * mkdir -p modules/instance
+ * mkdir -p modules/buckets
+ * vim modules/instances/main.tf
+ * vim modules/instances/variable.tf
+ * vim modules/buckets/main.tf
+ * vim modules/buckets/variable.tf
+- In variable we jst mention the type of variables
+- values are given in main.tf
 
+# meta arguments
 
+- Generally we create EC2 server, if we give apply & destroy it acts accordingly. But here in the code we mention prevent_destroy=true in lifecycle, now if 
+  we give terraform destroy it does't work.
+- we also have ignore_changes lifecycle. Even if some one change the "name" in code it doesn't reflects in instance.
+- for example - give Name = db_server, and give terraform apply. It shows the changes on cli, bt doesn't reflect the changes in real world infrastructure.
