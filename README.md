@@ -124,8 +124,8 @@ but here its not like loop. It doesn't even accept same iam user twice, it rejec
 
 # Alias & Providers
 
--From one main.tf file we can create 2 server resources in different regions at same time using alias & providers.         
--Provider is a plugin, that helps terraform to understand where the project has to be created.              
+- From one main.tf file we can create 2 server resources in different regions at same time using alias & providers.         
+- Provider is a plugin, that helps terraform to understand where the project has to be created.              
 
 # RBAC (Role Based Access Control)
 
@@ -133,10 +133,10 @@ provideing permissions to IAM users to create or delete s3 bucket, EC2, etc.
 
 # S3 Backend setup and statefile
 
-In terraform We need to store the statefile because all the information  we peovide in code is stored/present in it only.             
-we can store statefile in s3 bucket, Dynamo db, Vault etc. so that nobody can access it.             
-If we want to update the tffile by adding some tags & give terraform apply, it will go to statefile & check the infrastructure that is already created. If we didn't store the statefile it will create a new infrastructure. (If there is no statefile terraform will never know that it has to update infra, rather it creates a new one).           
-devops eng. -> will modify the code ->  terraform init -> terraform apply -> automatically the statefile is also updated in s3bucket             
+- In terraform We need to store the statefile because all the information  we peovide in code is stored/present in it only.             
+- we can store statefile in s3 bucket, Dynamo db, Vault etc. so that nobody can access it.             
+- If we want to update the tffile by adding some tags & give terraform apply, it will go to statefile & check the infrastructure that is already created. If we didn't store the statefile it will create a new infrastructure. (If there is no statefile terraform will never know that it has to update infra, rather it creates a new one).           
+- devops eng. -> will modify the code ->  terraform init -> terraform apply -> automatically the statefile is also updated in s3bucket             
 
 
 
