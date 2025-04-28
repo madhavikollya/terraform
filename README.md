@@ -140,11 +140,32 @@ providing permissions to IAM users to create or delete s3 bucket, EC2, etc.
 
 # Dynamic Block        
 
-Its purpose is reusablity of code.              
-If we write a code, want to use it again and again.                 
-For example, this might be most useful for creating security groups.          
+- Its purpose is reusablity of code.              
+- If we write a code, want to use it again and again.                 
+- For example, this might be most useful for creating security groups.          
+- Generally we write a code to create an instance & set up security group,so to skip rewriting the ingress and egress block we wring only one dynamic block and use for_each loop to take block by block information.                 
+Mandatory commands:-
+* terraform init -reconfigure
+* terraform init -migrate-state
+* terraform plan
+* terraform apply --auto-approve       
+
+# EFS (Elastic File System)
+
+- It is chargeable.
+- used for storage sharing purpose.
+- Generally we have to maintain 2 servers(appserver,webserver,DB) in different regions for safety purpose, so if we upload the content in one server it will 
+  automatically replicate in other server also.                
+- Browse terraform efs code -> c&p -> EFS created                
+- Goto EFS in AWS -> attach -> mount via DNS -> copy the command -> paste it on terminal                    
+  * Enable EFS for the content to get copied.
 
 
-
+# Modules     
+- Similar to ansible roles.                       
+- Here main.tf file is divided into multiple subfiles using module.                    
+- In module we can create multiple resources.              
+- It is not a best practise                 
+  
 
 
