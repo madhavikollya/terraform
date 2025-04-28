@@ -1,0 +1,6 @@
+provider "aws" {
+}
+
+resource "local_file" "abc" {
+file name = "/root/abc.txt"
+content = "hai all"
