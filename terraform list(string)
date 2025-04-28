@@ -4,11 +4,11 @@ region = "ap-south-1"
 
 resource "aws_iam_user" "one" {
 count = length(var.iam_users)
-name = var.iam_users[count_index]
+name = var.iam_users[count.index]
 }
 
 variable "iam_users" {
 description = "*"
-type = list{string}
+type = list(string)
 default = ["user1" , "user2"]
 }
