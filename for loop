@@ -1,0 +1,10 @@
+variable "iam_user_names" {
+  type    = list(string)
+  default = ["alice", "bob", "charlie"]
+}
+
+resource "aws_iam_user" "users" {
+  for_each = toset(var.iam_user_names)
+
+  name = each.value
+}
