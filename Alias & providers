@@ -1,0 +1,24 @@
+provider "aws" {
+region = "ap-south-1"
+alias = "south"
+}
+
+resource "aws_instance" "one" {
+provider = "aws.south"
+ami = "ami-0f1dcc636b69a6438"
+instance_type = "t2.micro"
+tags = {
+Name = "webserver"
+}
+}
+
+provider "aws" {
+region = "us-east-1"
+}
+
+resource "aws_instance" "two" {
+ami = "ami-0e449927258d45bc4"
+instance_type = "t2.micro"
+tags = {
+Name = "server"
+}
