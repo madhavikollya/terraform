@@ -1,0 +1,18 @@
+provider "aws" {
+}
+
+resource "aws_instance" "one" {
+ami = "ami-0f1dcc636b69a6438"
+instance_type = "t2.micro"
+tags = {
+Name = "webserver"
+}
+}
+
+terraform {
+  backend "s3" {
+    bucket = "maaddhu2"
+    key = "swiggy/prod"
+    region = "ap-south-1"
+  }
+}
