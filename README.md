@@ -108,5 +108,17 @@ terraform apply --auto-approve -var="instance_type=t2.micro" - will create insta
 
 # Terraform outputs variables
 
-Used to show metadata of resources. While creating resources if you want to print the metadata belonged to it the we can use output.
+Used to show metadata of resources. While creating resources if you want to print the metadata belonged to it the we can use output.           
+
+# Loops Concept
+
+It will take duplicate values and will show error.               
+Here if we try to create same iam user twice the terraform will first accept it and later rejects it and will show it as a error.             
+type = list(string)
+
+# Foreach loop
+
+It will eliminate the duplicate value.             
+but here its not like loop. It doesn't even accept same iam user twice, it rejects and will not show error because it will not take the input at all.  
+ type =set(string)   or   type = map(string)            
 
