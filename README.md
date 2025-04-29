@@ -1,14 +1,15 @@
 # Terraform
-we use terraform to build a infrastructure in aws/azure/gcp. 
-It is IaC (Infrastructure as code) tool.  
-we use Harshicorp configuration language to write it.  
+
+Here i am introducing you all to terraform and do check all the codes mentioned separately as folders.            
+
+- Terraform is a magical third party tool. we use terraform to build a infrastructure as code in aws/azure/gcp. It is IaC (Infrastructure as code) tool. It is written in Harshicorp configuration language.                           
 
 # Cloud alternatives for terraform
 AWS- Cloud formation template (JSON/YAML)                     
 AZURE- ARM Templates                    
 GCP- GDE               
 
-# 3 important compartments
+# 3 important Blocks
 Provider , region info
 
 Resource configuration
@@ -23,11 +24,11 @@ sudo apt update && sudo apt install terraform
 
 - Go to terraform install on google and select which ever machine u want to!
 - After installing terraform on amazon linux             
-aws configure            
-access key         
-secret key       
-Region        
-Format
+* aws configure            
+* access key         
+* secret key       
+* Region        
+* Format
 
 # Defining variable block
 
@@ -56,7 +57,7 @@ Tf var files :- When we want use same main.tf with different variables. For exam
 - vim swiggy.tfvars , vim zomato.tfvars - here we define all the values required for creating infrastructure.              
 - when we give terraform apply by changing the file names overridding may occur.           
 - so for this we have to use workspaces.                 
-create different workspaces for each infrastructure and then try terraform apply. now no overriding take place.         
+create different workspaces for each infrastructure and then try terraform apply. Then no overriding will take place.         
 
 # Commands used
 
@@ -77,13 +78,13 @@ create different workspaces for each infrastructure and then try terraform apply
 
 # To delete workspaces
 
-* To delete swiggy workspace, first go into the         
--terraform workspace select swiggy           
--terraform destroy --var-file="swiggy.tfvars" --auto-approve         
--now we can't direct delete swiggy workspace by staying inside it. so come out of it.
--terraform workspace select default
-terraform workspace delete swiggy
- In this way we have to delete all the workspaces we created.      
+* To delete swiggy workspace, first go into the                      
+- terraform workspace select swiggy                  
+- terraform destroy --var-file="swiggy.tfvars" --auto-approve             
+- now we can't directly delete swiggy workspace by staying inside it. so come out of it.          
+- terraform workspace select default                 
+- terraform workspace delete swiggy                    
+ In this way we have to delete all the workspaces we created.              
 
 # Locals
 we can define locals once and can be changed multiple times.         
@@ -96,13 +97,13 @@ differnce between locals and variables.
 -values which are static should be kept here.           
 
 * Variables-      
--can be written separately also.         
--will change time to time.                    
--vaues which are dynamis should kept here.                   
+-can also be written as a separate file.              
+-will change time to time.                           
+-vaues which are dynamic should be kept here.                        
 
 # Terraform CLI
 
-we use it to pass values from commandline during the runtime. Bymistake if we provide wrong information, it compares with statefile and replace with right one. For example if you give instance type as t2.medium instead of t2.micro, terraform will first refresh, then compares with statefile and the deletes.                  
+we use it to pass values from commandline during the runtime. Bymistake if we provide wrong information in the command line, it compares with statefile and will replace with right one. For example if you give instance type as t2.medium instead of t2.micro, terraform will first refresh, then compares with statefile finds a right insstance type and then deletes it.                        
 terraform apply --auto-approve -var="instance_type=t2.micro" - will create instance                
 
 # Terraform outputs variables
@@ -111,8 +112,8 @@ Used to show metadata of resources. While creating resources if you want to prin
 
 # Loops Concept
 
-It will take duplicate values and will show error.               
-Here if we try to create same iam user twice the terraform will first accept it and later rejects it and will show it as a error.             
+- It will take duplicate values and will show error.                   
+- Here if we try to create same iam user twice the terraform will first accept it and later rejects it and will show it as a error.                   
 type = list(string)
 
 # For_each loop
@@ -132,7 +133,7 @@ providing permissions to IAM users to create or delete s3 bucket, EC2, etc.
 
 # S3 Backend setup and statefile
 
-- In terraform We need to store the statefile because all the information  we peovide in code is stored/present in it only.             
+- In terraform We need to store the statefile because all the information we provide in code is stored/present in statefile.             
 - we can store statefile in s3 bucket, Dynamo db, Vault etc. so that nobody can access it.             
 - If we want to update the tffile by adding some tags & give terraform apply, it will go to statefile & check the infrastructure that is already created. If we didn't store the statefile it will create a new infrastructure. (If there is no statefile terraform will never know that it has to update infra, rather it creates a new one).           
 - devops eng. -> will modify the code ->  terraform init -> terraform apply -> automatically the statefile is also updated in s3bucket
@@ -143,7 +144,8 @@ providing permissions to IAM users to create or delete s3 bucket, EC2, etc.
 - Its purpose is reusablity of code.              
 - If we write a code, want to use it again and again.                 
 - For example, this might be most useful for creating security groups.          
-- Generally we write a code to create an instance & set up security group,so to skip rewriting the ingress and egress block we wring only one dynamic block and use for_each loop to take block by block information.                 
+- Generally we write a code to create an instance & set up security group,so to skip rewriting the ingress and egress block we write only one dynamic block and use for_each loop to take block by block information.                        
+
 Mandatory commands:-
 * terraform init -reconfigure
 * terraform init -migrate-state
@@ -154,9 +156,7 @@ Mandatory commands:-
 
 - It is chargeable.
 - used for storage sharing purpose.
-- Generally we have to maintain 2 servers(appserver,webserver,DB) in different regions for safety purpose, so if we upload the content in one server it will 
-  automatically replicate in other server also.                
-- Browse terraform efs code -> c&p -> EFS created                
+- Generally we have to maintain 2 servers(appserver,webserver,DB) in different regions for safety purpose, so if we upload the content in one server it will automatically replicate in other server also. (Browse terraform efs code -> copy&paste -> EFS created).                          
 - Goto EFS in AWS -> attach -> mount via DNS -> copy the command -> paste it on terminal                    
   * Enable EFS on AWS for the content to get copied.
 
@@ -166,8 +166,9 @@ Mandatory commands:-
 - Similar to ansible roles.                       
 - Here main.tf file is divided into multiple subfiles using module.                    
 - In module we can create multiple resources.              
-- It is not a best practise                 
-- create --
+- It is not a best practise
+               
+create --
  * vim provider.tf                  
  * vim main.tf
  * mkdir -p modules/instance
@@ -175,13 +176,13 @@ Mandatory commands:-
  * vim modules/instances/main.tf
  * vim modules/instances/variable.tf
  * vim modules/buckets/main.tf
- * vim modules/buckets/variable.tf
-- In variable we jst mention the type of variables
-- values are given in main.tf
+ * vim modules/buckets/variable.tf             
+   
+- In variable we just mention the type of variables                
+- values are given in main.tf                      
 
 # meta arguments
 
-- Generally we create EC2 server, if we give apply & destroy it acts accordingly. But here in the code we mention prevent_destroy=true in lifecycle, now if 
-  we give terraform destroy it does't work.
+- Generally we create EC2 server, if we give terraform apply & destroy on terminal it acts accordingly. But here in the code we mention prevent_destroy=true in lifecycle, now if we give terraform destroy it does't work.            
 - we also have ignore_changes lifecycle. Even if some one change the "name" in code it doesn't reflects in instance.
-- for example - give Name = db_server, and give terraform apply. It shows the changes on cli, bt doesn't reflect the changes in real world infrastructure.
+- for example - give (Name = db_server), and give terraform apply. It shows the changes on cli, bt doesn't reflect the changes in real world infrastructure.                              
