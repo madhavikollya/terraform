@@ -74,7 +74,8 @@ create different workspaces for each infrastructure and then try terraform apply
 - terraform workspace new swiggy - to create new workspace.            
 - terraform workspace list - will show the list of workspace.           
 - terraform workspace select swiggy - to go into that particular workspace.           
-- terraform apply --var-file="swiggy.tfvars" --auto-approve - to create swiggy.tfvars                    
+- terraform apply --var-file="swiggy.tfvars" --auto-approve - to create swiggy.tfvars
+- terraform import - used to import the resources or existing infrastructure which are created outside the terraform.                     
 
 # To delete workspaces
 
